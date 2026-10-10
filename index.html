@@ -55,6 +55,7 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
 .proj .t{font-weight:700}
 .proj .t span.meta{font-weight:400;color:var(--mute);margin-left:.35em}
 .proj .t span.meta.own-line{margin-left:0;white-space:nowrap}
+th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
 @media (max-width:640px){.doc{padding:24px 16px;margin:10px 0 30px;border-radius:0;border-left:0;border-right:0}h1{font-size:23px}th{width:7.5em}}
 @page{size:A4;margin:14mm 14mm}
 @media print{
@@ -149,7 +150,7 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
      "분기 단위로만 하던 3개국 3개 법인 연결결산을 <b>처음으로 월 단위 체계로 구축</b>(연결 BS·PL·직접법/간접법 CF), PE 투자사 정기보고·월간 경영실적보고(MBR) 정착",
      "3개국 12개 계좌·5개 통화 자금관리, 유상증자를 통한 그룹 내 자금이전 구조 설계·실행",
      "취업규칙 전면 개정(개정 노동법·노무법인 검토 반영, 정년 65세 연장), 근태관리규정 신규 제정, 사내 위키 가이드 4종(휴가·근태·법인카드·복리후생) 발간 등 인사·노무 체계 정비",
-     "생성형 AI(Claude)를 회계·결산·보고 실무에 상시 활용, 외부 개발 인력 없이 사내 ERP 4종(연결결산·비용정산·근태급여·영업) 직접 구축, 자체 검증으로 결산 정확도 향상, 급여·복리후생비 지급 업무 <b>90% 이상 단축·오류 0건</b>"
+     "생성형 AI(Claude)를 실무에 상시 활용해 사내 ERP 4종 직접 구축, 급여·복리후생비 지급 업무 <b>90% 이상 단축·오류 0건</b>"
     ],
     "overview": [
      [
@@ -350,12 +351,29 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
     "items": [
      "외부 개발 인력 없이 연결결산·비용정산·근태급여·영업 ERP 4종을 기획·요구사항 정의·구현·운영까지 단독 주도(약 3.5만 LOC)",
      "핵심 성과: 급여·복리후생비 지급 업무 소요시간 90% 이상 단축·도입 후 지급 금액 오류 0건, 법인카드 정산 5영업일 → 2영업일(60% 단축), 보고서 작성 1~2일 → 즉시",
-     "디버스랩ERP(연결결산 자동화): 직접 설계한 3개국 연결회계 모델을 시스템화, 연결 BS·PL·간접법/직접법 현금흐름표·인건비·월결산보고서 자동 생성",
-     "결산 정확도 자체 검증: 저장 시 수식 오류·순환 참조·대차 불일치·값 급변 차단·경고",
-     "스텔스몰ERP(근태·급여·인사복지): 세콤 출입기록 기반 근태 계산·연차 승인·초과수당 산정, 금액 검증 후 급여명세서 자동 생성·메일 일괄 발송, 인원·급여·발령·복지·채용 정보를 단일 HR DB로 일원화",
-     "FN스몰ERP(비용정산): 법인카드 승인내역 월별 취합, 계정·세목(74종) 자동분류, 증빙·누락 검증, 현금흐름표 라인 자동 집계",
-     "BD버스ERP(영업 지원): 출장여비 계산·출장 일정판·사전신청/정산 구축, 영업 매출 관리로 확장해 영업사원 업무 효율 개선 진행 중",
-     "보고 자동화: 매출·지출 엑셀 기반 현금 유동성 주간보고 슬라이드 자동 생성"
+     "결산 정확도 자체 검증: 저장 시 수식 오류·순환 참조·대차 불일치·값 급변 차단·경고"
+    ],
+    "table": [
+     [
+      "디버스랩ERP<small>연결결산 자동화</small>",
+      "직접 설계한 3개국 연결회계 모델을 시스템화, 연결 BS·PL·간접법/직접법 현금흐름표·인건비·월결산보고서 자동 생성"
+     ],
+     [
+      "스텔스몰ERP<small>근태·급여·인사복지</small>",
+      "세콤 출입기록 기반 근태 계산·연차 승인·초과수당 산정, 금액 검증 후 급여명세서 자동 생성·메일 일괄 발송, 인원·급여·발령·복지·채용 정보를 단일 HR DB로 일원화"
+     ],
+     [
+      "FN스몰ERP<small>비용정산</small>",
+      "법인카드 승인내역 월별 취합, 계정·세목(74종) 자동분류, 증빙·누락 검증, 현금흐름표 라인 자동 집계"
+     ],
+     [
+      "BD버스ERP<small>영업 지원</small>",
+      "출장여비 계산·출장 일정판·사전신청/정산 구축, 영업 매출 관리로 확장해 영업사원 업무 효율 개선 진행 중"
+     ],
+     [
+      "보고 자동화",
+      "매출·지출 엑셀 기반 현금 유동성 주간보고 슬라이드 자동 생성"
+     ]
     ]
    },
    {
@@ -448,7 +466,7 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
      "Building the group's <b>first monthly consolidated close</b> across 3 entities in 3 countries (BS, P&L, direct and indirect CF), replacing a quarterly-only process; setting up PE investor reporting and the monthly business review",
      "Managing 12 bank accounts in 5 currencies; designing and executing a group fund transfer via capital increase",
      "Updating HR rules: a full revision of the Rules of Employment (new labor laws and labor law firm review reflected; retirement age extended to 65), a new Attendance Policy, and 4 employee guides on the company wiki (leave, attendance, corporate card, benefits)",
-     "Using generative AI (Claude) every day in accounting, closing, and reporting; building 4 in-house ERP modules (consolidation, expenses, attendance and payroll, sales) with no outside developers, adding automatic checks to raise accuracy, and cutting payroll and benefit payment work <b>by over 90% with zero errors</b>"
+     "Using generative AI (Claude) every day to build 4 in-house ERP modules, cutting payroll and benefit payment work <b>by over 90% with zero errors</b>"
     ],
     "overview": [
      [
@@ -649,12 +667,29 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
     "items": [
      "Single-handedly planning, building, and running 4 in-house ERP modules (consolidation, expenses, attendance and payroll, sales) with no outside developers (~35k lines of code)",
      "Key results: cutting payroll and benefit payment work by over 90% with zero payment errors; corporate card settlement from 5 to 2 business days (−60%); reports in minutes instead of 1–2 days",
-     "DVERSELAB ERP (consolidation): turning my own 3-country consolidation model into a system that builds the consolidated BS, P&L, indirect and direct CF, staff cost, and monthly close report",
-     "Built-in accuracy checks: blocking or flagging formula errors, circular references, balance mismatches, and sudden value jumps on every save",
-     "StealthMole ERP (attendance, payroll, benefits): hours from access-control logs, leave approval, overtime; checking payroll amounts and emailing payslips; one HR database for headcount, pay, benefits, and hiring",
-     "FN ERP (expense settlement): collecting card transactions monthly, auto-classifying them into 74 account codes, checking receipts, and mapping them to cash flow lines",
-     "BD ERP (sales support): travel expense calculation, team travel calendar, pre-approval and settlement; now adding sales revenue tracking to help the sales team",
-     "Report automation: creating weekly cash and liquidity slides from revenue and spending files"
+     "Built-in accuracy checks: blocking or flagging formula errors, circular references, balance mismatches, and sudden value jumps on every save"
+    ],
+    "table": [
+     [
+      "DVERSELAB ERP<small>consolidation</small>",
+      "Turning my own 3-country consolidation model into a system that builds the consolidated BS, P&L, indirect and direct CF, staff cost, and monthly close report"
+     ],
+     [
+      "StealthMole ERP<small>attendance, payroll, benefits</small>",
+      "Hours from access-control logs, leave approval, overtime; checking payroll amounts and emailing payslips; one HR database for headcount, pay, benefits, and hiring"
+     ],
+     [
+      "FN ERP<small>expense settlement</small>",
+      "Collecting card transactions monthly, auto-classifying them into 74 account codes, checking receipts, and mapping them to cash flow lines"
+     ],
+     [
+      "BD ERP<small>sales support</small>",
+      "Travel expense calculation, team travel calendar, pre-approval and settlement; now adding sales revenue tracking to help the sales team"
+     ],
+     [
+      "Report automation",
+      "Creating weekly cash and liquidity slides from revenue and spending files"
+     ]
     ]
    },
    {
@@ -716,6 +751,8 @@ const ul = arr => '<ul>' + arr.map(i => '<li>' + esc(i) + '</li>').join('') + '<
 const meta = m => String(m).replace(/\s*\(([^()]*)\)\s*$/, ' <small class="note">($1)</small>');
 const tbl = rows => rows.length ? '<table>' + rows.map(r => '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>').join('') + '</table>' : '';
 
+const proj = p => `<div class="proj"><div class="t">${p.title}<span class="meta">| ${p.meta}</span></div>${ul(p.items)}${p.table ? tbl(p.table) : ''}</div>`;
+
 function head(L) {
   return `<h1>${L.name}</h1><div class="contact">${L.contact.split(' · ').map(c => '<span>' + c + '</span>').join(' · ')}</div>
   <div class="headline">${L.headline}</div>
@@ -734,7 +771,7 @@ function resume(L) {
     <h2>${b.experience}</h2>` +
     L.experience.map(e => `<h3>${e.company}</h3><p class="role">${e.role} <span>| ${e.period}</span></p><p class="desc">${e.desc}</p>${ul(e.resume)}`).join('') +
     `<h2>${b.projects}</h2>` +
-    L.projects.map(p => `<div class="proj"><div class="t">${p.title}<span class="meta">| ${p.meta}</span></div>${ul(p.items)}</div>`).join('') +
+    L.projects.map(proj).join('') +
     tail(L);
 }
 function career(L) {
@@ -744,7 +781,7 @@ function career(L) {
       <p class="role">${e.role}</p><p class="desc">${e.desc}</p>${tbl(e.overview)}
       ${e.career.map(g => `<div class="grp">${g.group}</div>${ul(g.items)}`).join('')}`).join('') +
     `<h2>${b.projects}</h2>` +
-    L.projects.map(p => `<div class="proj"><div class="t">${p.title}<span class="meta">| ${p.meta}</span></div>${ul(p.items)}</div>`).join('') +
+    L.projects.map(proj).join('') +
     tail(L);
 }
 
