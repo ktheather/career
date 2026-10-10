@@ -206,19 +206,6 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
        "사내 위키 \"슬기로운 회사생활\" 가이드 4종 작성·게시: 휴가·휴일, 근태관리, 법인카드 사용, 복리후생 (전 직원 대상 규정 안내)",
        "사내 인사 공지 작성·게시(10건, 이후 사내 위키에 통합): 청년미래적금·국민연금 상·하한액 인상 등 제도 변경 안내, 근무기록·복지비 정산·재택근무 신청 절차 변경 공지"
       ]
-     },
-     {
-      "group": "생성형 AI(Claude) 활용 사내 ERP·업무자동화 시스템 구축 (2026.06~현재)",
-      "items": [
-       "외부 개발 인력 없이 연결결산·비용정산·근태급여·영업 ERP 4종을 기획·요구사항 정의·구현·운영까지 단독 주도(약 3.5만 LOC)",
-       "핵심 성과: 급여·복리후생비 지급 업무 소요시간 90% 이상 단축·도입 후 지급 금액 오류 0건, 법인카드 정산 5영업일 → 2영업일(60% 단축), 보고서 작성 1~2일 → 즉시",
-       "디버스랩ERP(연결결산 자동화): 직접 설계한 3개국 연결회계 모델을 시스템화, 연결 BS·PL·간접법/직접법 현금흐름표·인건비·월결산보고서 자동 생성",
-       "결산 정확도 자체 검증: 저장 시 수식 오류·순환 참조·대차 불일치·값 급변 차단·경고",
-       "스텔스몰ERP(근태·급여·인사복지): 세콤 출입기록 기반 근태 계산·연차 승인·초과수당 산정, 금액 검증 후 급여명세서 자동 생성·메일 일괄 발송, 인원·급여·발령·복지·채용 정보를 단일 HR DB로 일원화",
-       "FN스몰ERP(비용정산): 법인카드 승인내역 월별 취합, 계정·세목(74종) 자동분류, 증빙·누락 검증, 현금흐름표 라인 자동 집계",
-       "BD버스ERP(영업 지원): 출장여비 계산·출장 일정판·사전신청/정산 구축, 영업 매출 관리로 확장해 영업사원 업무 효율 개선 진행 중",
-       "보고 자동화: 매출·지출 엑셀 기반 현금 유동성 주간보고 슬라이드 자동 생성"
-      ]
      }
     ]
    },
@@ -357,6 +344,20 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
    }
   ],
   "projects": [
+   {
+    "title": "생성형 AI(Claude) 활용 사내 ERP·업무자동화 시스템 구축",
+    "meta": "StealthMole / 디버스랩 | 2026.06 ~ 현재",
+    "items": [
+     "외부 개발 인력 없이 연결결산·비용정산·근태급여·영업 ERP 4종을 기획·요구사항 정의·구현·운영까지 단독 주도(약 3.5만 LOC)",
+     "핵심 성과: 급여·복리후생비 지급 업무 소요시간 90% 이상 단축·도입 후 지급 금액 오류 0건, 법인카드 정산 5영업일 → 2영업일(60% 단축), 보고서 작성 1~2일 → 즉시",
+     "디버스랩ERP(연결결산 자동화): 직접 설계한 3개국 연결회계 모델을 시스템화, 연결 BS·PL·간접법/직접법 현금흐름표·인건비·월결산보고서 자동 생성",
+     "결산 정확도 자체 검증: 저장 시 수식 오류·순환 참조·대차 불일치·값 급변 차단·경고",
+     "스텔스몰ERP(근태·급여·인사복지): 세콤 출입기록 기반 근태 계산·연차 승인·초과수당 산정, 금액 검증 후 급여명세서 자동 생성·메일 일괄 발송, 인원·급여·발령·복지·채용 정보를 단일 HR DB로 일원화",
+     "FN스몰ERP(비용정산): 법인카드 승인내역 월별 취합, 계정·세목(74종) 자동분류, 증빙·누락 검증, 현금흐름표 라인 자동 집계",
+     "BD버스ERP(영업 지원): 출장여비 계산·출장 일정판·사전신청/정산 구축, 영업 매출 관리로 확장해 영업사원 업무 효율 개선 진행 중",
+     "보고 자동화: 매출·지출 엑셀 기반 현금 유동성 주간보고 슬라이드 자동 생성"
+    ]
+   },
    {
     "title": "여행사 인수 기업가치평가 및 PPA (Project RUN-AWAY)",
     "meta": "여기어때 | 2021.10 ~ 2021.11, 2025.06 ~ 2026.02",
@@ -504,19 +505,6 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
        "Writing and publishing 4 employee guides on the company wiki (\"Smart Company Life\"): leave and holidays, attendance, corporate card use, and benefits",
        "Writing and posting 10 HR notices (later moved to the company wiki): explaining policy changes such as a youth savings program and new national pension limits, and announcing new processes for work records, benefit claims, and remote work requests"
       ]
-     },
-     {
-      "group": "Internal ERP and Automation Built with Generative AI (Claude) (Jun 2026 – Present)",
-      "items": [
-       "Single-handedly planning, building, and running 4 in-house ERP modules (consolidation, expenses, attendance and payroll, sales) with no outside developers (~35k lines of code)",
-       "Key results: cutting payroll and benefit payment work by over 90% with zero payment errors; corporate card settlement from 5 to 2 business days (−60%); reports in minutes instead of 1–2 days",
-       "DVERSELAB ERP (consolidation): turning my own 3-country consolidation model into a system that builds the consolidated BS, P&L, indirect and direct CF, staff cost, and monthly close report",
-       "Built-in accuracy checks: blocking or flagging formula errors, circular references, balance mismatches, and sudden value jumps on every save",
-       "StealthMole ERP (attendance, payroll, benefits): hours from access-control logs, leave approval, overtime; checking payroll amounts and emailing payslips; one HR database for headcount, pay, benefits, and hiring",
-       "FN ERP (expense settlement): collecting card transactions monthly, auto-classifying them into 74 account codes, checking receipts, and mapping them to cash flow lines",
-       "BD ERP (sales support): travel expense calculation, team travel calendar, pre-approval and settlement; now adding sales revenue tracking to help the sales team",
-       "Report automation: creating weekly cash and liquidity slides from revenue and spending files"
-      ]
      }
     ]
    },
@@ -655,6 +643,20 @@ thead th{background:var(--ink);color:var(--bg);width:auto}
    }
   ],
   "projects": [
+   {
+    "title": "In-house ERP & Automation Built with Generative AI (Claude)",
+    "meta": "StealthMole | Jun 2026 – Present",
+    "items": [
+     "Single-handedly planning, building, and running 4 in-house ERP modules (consolidation, expenses, attendance and payroll, sales) with no outside developers (~35k lines of code)",
+     "Key results: cutting payroll and benefit payment work by over 90% with zero payment errors; corporate card settlement from 5 to 2 business days (−60%); reports in minutes instead of 1–2 days",
+     "DVERSELAB ERP (consolidation): turning my own 3-country consolidation model into a system that builds the consolidated BS, P&L, indirect and direct CF, staff cost, and monthly close report",
+     "Built-in accuracy checks: blocking or flagging formula errors, circular references, balance mismatches, and sudden value jumps on every save",
+     "StealthMole ERP (attendance, payroll, benefits): hours from access-control logs, leave approval, overtime; checking payroll amounts and emailing payslips; one HR database for headcount, pay, benefits, and hiring",
+     "FN ERP (expense settlement): collecting card transactions monthly, auto-classifying them into 74 account codes, checking receipts, and mapping them to cash flow lines",
+     "BD ERP (sales support): travel expense calculation, team travel calendar, pre-approval and settlement; now adding sales revenue tracking to help the sales team",
+     "Report automation: creating weekly cash and liquidity slides from revenue and spending files"
+    ]
+   },
    {
     "title": "Travel Agency Acquisition: Valuation & PPA (Project RUN-AWAY)",
     "meta": "GC Company | Oct–Nov 2021, Jun 2025 – Feb 2026",
