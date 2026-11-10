@@ -59,6 +59,30 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
 .proj table{table-layout:auto}
 .proj th{width:1%;white-space:nowrap}
 @media (max-width:640px){.doc{padding:24px 16px;margin:10px 0 30px;border-radius:0;border-left:0;border-right:0}h1{font-size:23px}th{width:7.5em}}
+.pf-note{color:var(--mute);font-size:12.5px;margin:4px 0 0}
+.pf-card{border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:18px 0}
+.pf-card h3{margin:0 0 2px;font-size:16px}
+.pf-meta{color:var(--mute);font-size:12.5px;margin:0 0 8px}
+.pf-desc{margin:0 0 10px}
+.pf-kv{display:grid;grid-template-columns:6.5em 1fr;gap:4px 12px;font-size:13px;margin:0 0 6px}
+.pf-kv dt{font-weight:600;color:var(--ink2)}
+.pf-kv dd{margin:0}
+.pf-kv ul{margin:0;padding-left:16px}
+.pf-grp{font-weight:700;font-size:13px;margin:14px 0 8px;color:var(--ink2)}
+.pf-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.pf-gallery figure{margin:0}
+.pf-gallery button{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:4px;background:var(--soft);cursor:zoom-in;overflow:hidden}
+.pf-gallery img{display:block;width:100%;height:150px;object-fit:cover;object-position:top left}
+.pf-gallery figcaption{font-size:12px;color:var(--ink2);margin-top:5px;line-height:1.4}
+.pf-gallery figcaption small{display:block;color:var(--mute);font-size:11px}
+.pf-lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.82);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:10px}
+.pf-lb[hidden]{display:none}
+.pf-lb img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;background:#fff;border-radius:4px}
+.pf-lb p{color:#eee;margin:0;font-size:13px;text-align:center}
+.pf-lb .pf-x{position:absolute;top:12px;right:14px;border:1px solid #888;background:#222;color:#fff;border-radius:6px;padding:5px 10px;font:inherit;cursor:pointer}
+.pf-lb .pf-nav{position:absolute;top:50%;transform:translateY(-50%);border:1px solid #888;background:#222;color:#fff;border-radius:6px;padding:8px 12px;font:inherit;cursor:pointer}
+.pf-lb .pf-prev{left:10px}.pf-lb .pf-next{right:10px}
+@media (max-width:640px){.pf-card{padding:14px}.pf-kv{grid-template-columns:1fr}.pf-gallery{grid-template-columns:1fr 1fr;gap:8px}.pf-gallery img{height:110px}}
 @page{size:A4;margin:14mm 14mm}
 @media print{
   :root{--ink:#111;--ink2:#333;--mute:#666;--line:#bbb;--soft:#f0f0f0;--bg:#fff;--page:#fff}
@@ -66,7 +90,9 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
   .bar,.meta{display:none!important}
   body{background:#fff;font-size:10.5pt}
   .doc{border:0;margin:0;padding:0;max-width:none}
-  h2,h3,.proj,tr{break-inside:avoid-page}
+  h2,h3,.proj,tr,.pf-gallery figure{break-inside:avoid-page}
+  .pf-lb{display:none!important}
+  .pf-gallery img{height:auto;object-fit:contain}
   h2,h3{break-after:avoid-page}
   a{color:inherit;text-decoration:none}
 }
@@ -76,6 +102,7 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
   <div class="seg" role="group" aria-label="문서">
     <button id="t-resume" aria-pressed="true">이력서</button>
     <button id="t-career" aria-pressed="false">경력기술서</button>
+    <button id="t-portfolio" aria-pressed="false">포트폴리오</button>
   </div>
   <div class="seg" role="group" aria-label="Language">
     <button id="l-ko" aria-pressed="true">국문</button>
@@ -88,6 +115,7 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
 </div></div>
 <div class="meta" id="meta"></div>
 <main class="doc" id="doc"></main>
+<div class="pf-lb" id="pf-lb" hidden role="dialog" aria-modal="true"><button class="pf-x" id="pf-x" type="button">✕</button><button class="pf-nav pf-prev" id="pf-prev" type="button" aria-label="Previous">‹</button><img id="pf-img" alt=""><p id="pf-cap"></p><button class="pf-nav pf-next" id="pf-next" type="button" aria-label="Next">›</button></div>
 
 <!--
   ===== DATA (자동 업데이트 대상) =====
@@ -96,7 +124,7 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
 -->
 <script id="data" type="application/json">
 {
- "lastUpdated": "2026-11-04",
+ "lastUpdated": "2026-11-10",
  "files": {
   "resume": {
    "ko": "통합이력서_김태희.docx",
@@ -450,8 +478,193 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
    "careerTitle": "경력기술서",
    "resumeTitle": "이력서",
    "overview": "개요",
-   "updated": "최종 업데이트"
-  }
+   "updated": "최종 업데이트",
+   "portfolio": "포트폴리오",
+   "portfolioTitle": "포트폴리오",
+   "pfRole": "역할",
+   "pfFeatures": "주요 기능",
+   "pfTech": "사용 기술",
+   "pfNote": "모든 화면은 가상 데이터로 재현했으며 실제 수치·인물 정보가 아닙니다. 이미지를 누르면 크게 볼 수 있습니다.",
+   "pfCaption": "가상 데이터로 재현 · 실제 수치 아님"
+  },
+  "portfolio": [
+   {
+    "title": "디버스랩ERP · 3개국 연결결산 시스템",
+    "meta": "StealthMole / 디버스랩 | 2026.08 ~ 현재",
+    "desc": "싱가포르·한국·말레이시아 3개 법인의 장부를 모아 연결 재무상태표·손익계산서·현금흐름표(직접법·간접법)·인건비 보고서를 자동으로 만드는 사내 연결결산 ERP",
+    "role": "연결회계 모델 설계, 요구사항 정의, 생성형 AI(Claude Code)를 활용한 단독 개발·운영",
+    "features": [
+     "법인별 장부 업로드·셀 수정 시 수식 오류·대차·현금 일치 자동 검증 후 반영",
+     "통합 환율 관리: 월말 환율 하나로 손익 분기평균·재무상태 월말 환율 자동 적용",
+     "구글 시트 원천 자동 반영(결산 기간 매일), 검증 실패 시 반영 보류 및 사유 표시",
+     "월결산보고서(xlsx) 자동 생성: 표지·손익·재무상태·현금흐름(직접법·간접법)·인건비"
+    ],
+    "tech": "Node.js · Express · HyperFormula · SheetJS · Google Apps Script",
+    "groups": [
+     {
+      "title": "ERP 화면",
+      "key": "screen"
+     },
+     {
+      "title": "산출물 · 월결산보고서(xlsx)",
+      "key": "report"
+     }
+    ],
+    "id": "consol-erp",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/consol-erp-1-bs.webp",
+      "caption": "연결 재무상태표 통합 화면"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/consol-erp-2-cf-direct.webp",
+      "caption": "연결 현금흐름표(직접법) 통합 화면"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/consol-erp-3-report.webp",
+      "caption": "월결산보고서 생성 · 자동 검증 결과"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-0-cover.webp",
+      "caption": "표지"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-1-is.webp",
+      "caption": "월별 손익계산서"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-2-bs.webp",
+      "caption": "월별 재무상태표"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-3-cf-direct.webp",
+      "caption": "월별 현금흐름(직접법)"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-4-cf-indirect.webp",
+      "caption": "월별 현금흐름(간접법)"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-5-hr.webp",
+      "caption": "월별 인건비·인원"
+     }
+    ]
+   },
+   {
+    "title": "2026 카테고리별 지출 대시보드",
+    "meta": "StealthMole / 디버스랩 | 2026.10 ~ 현재",
+    "desc": "3개국 은행·카드 출금 내역을 지출 카테고리로 분류해 법인별·월별 지출과 비중을 보여 주는 경영진 공유용 대시보드",
+    "role": "분류 기준 설계, 거래 데이터 정리·분류, 대시보드 구축 및 매일 자동 갱신 설정",
+    "features": [
+     "KPI 카드: 총지출·법인별 지출·최대 항목 비중",
+     "카테고리별 누계·월별 누적 막대 차트",
+     "현지 통화/원화 환산 전환, 법인별 월별 히트맵 표"
+    ],
+    "tech": "Google Sheets · Claude Dashboard · d3.js",
+    "groups": [
+     {
+      "title": "대시보드 화면",
+      "key": "screen"
+     }
+    ],
+    "id": "spend-dashboard",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/spend-1-overview.webp",
+      "caption": "요약·KPI·차트"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/spend-2-tables.webp",
+      "caption": "통합 요약·월별 히트맵 표"
+     }
+    ]
+   },
+   {
+    "title": "스텔스몰ERP · 근태·인사 HR ERP",
+    "meta": "StealthMole / 디버스랩 | 2026.08 ~ 현재",
+    "desc": "출입 태그 기록으로 근태를 자동 계산하는 것에서 시작해 인원명부·급여·복리후생·채용까지 한 곳에서 관리하는 사내 HR ERP",
+    "role": "근태·급여 규정을 시스템 규칙으로 정리, 요구사항 정의, 생성형 AI(Claude Code)를 활용한 단독 개발·운영",
+    "features": [
+     "탄력근무제 코어타임·주 40~52시간 규정 자동 판정 대시보드",
+     "일별·월별·캘린더 근태 결과, 특이근무(연차·재택·출장) 반영",
+     "인원명부 단일 DB로 전 화면 인원 기준 통일",
+     "급여명세서 금액 검증 후 자동 생성·일괄 발송(급여 화면은 비공개)"
+    ],
+    "tech": "Python FastAPI · SQLAlchemy · JavaScript · Tailwind CSS · Chart.js · Google SSO",
+    "groups": [
+     {
+      "title": "ERP 화면",
+      "key": "screen"
+     }
+    ],
+    "id": "hr-erp",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-1-dashboard.webp",
+      "caption": "근태 대시보드"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-2-monthly.webp",
+      "caption": "월별 근태 계산결과"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-3-calendar.webp",
+      "caption": "근태 캘린더"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-4-roster.webp",
+      "caption": "인원명부"
+     }
+    ]
+   },
+   {
+    "title": "샘플 DCF·PPA 모델",
+    "meta": "기업가치평가 방법론 예시",
+    "desc": "기업가치평가(DCF)·PPA(MEEM) 모델링 방식을 보여 주는 일반 샘플 모델이며 특정 거래와 무관",
+    "role": "여기어때 인수 대상 기업가치평가(DCF/PPA) 프로젝트 참여 경험을 바탕으로 방법론을 재구성",
+    "features": [
+     "FCFF 기반 DCF: 기간 중간 할인, 영구성장 모형, 영업가치에서 지분가치까지 산정",
+     "WACC × 영구성장률 민감도 표",
+     "고객관계 무형자산 평가(MEEM): 이탈률, 기여자산 비용, 세금 상각 효과(TAB)",
+     "모든 계산을 엑셀 수식으로 연결(입력값 파랑 · 수식 검정)"
+    ],
+    "tech": "Excel 재무 모델링",
+    "groups": [
+     {
+      "title": "모델 화면",
+      "key": "screen"
+     }
+    ],
+    "id": "sample-valuation",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-dcf.webp",
+      "caption": "DCF (FCFF) 모델"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-ppa.webp",
+      "caption": "PPA · 고객관계(MEEM)"
+     }
+    ]
+   }
+  ]
  },
  "en": {
   "name": "Taehee (Heather) Kim",
@@ -796,8 +1009,193 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
    "careerTitle": "Career Description",
    "resumeTitle": "Résumé",
    "overview": "Overview",
-   "updated": "Last updated"
-  }
+   "updated": "Last updated",
+   "portfolio": "Portfolio",
+   "portfolioTitle": "Portfolio",
+   "pfRole": "My role",
+   "pfFeatures": "Key features",
+   "pfTech": "Tech",
+   "pfNote": "All screens are recreated with sample data; no actual figures or personal information. Click an image to enlarge.",
+   "pfCaption": "Recreated with sample data; not actual figures"
+  },
+  "portfolio": [
+   {
+    "title": "DVERSELAB ERP · 3-Entity Consolidation System",
+    "meta": "StealthMole / DVERSELAB | Aug 2026 – Present",
+    "desc": "In-house consolidation ERP that combines the ledgers of the Singapore, Korea and Malaysia entities and produces the consolidated balance sheet, P&L, cash flow statements (direct and indirect) and staff cost report",
+    "role": "Designed the consolidation model and requirements; built and run it alone with generative AI (Claude Code)",
+    "features": [
+     "Checks formula errors, balance and cash before accepting any upload or cell edit",
+     "One FX table drives quarterly-average P&L and month-end balance sheet rates",
+     "Pulls source Google Sheets daily during closing and holds the update when checks fail",
+     "Generates the monthly closing report (xlsx): cover, P&L, balance sheet, cash flow (direct and indirect), staff cost"
+    ],
+    "tech": "Node.js · Express · HyperFormula · SheetJS · Google Apps Script",
+    "groups": [
+     {
+      "title": "ERP screens",
+      "key": "screen"
+     },
+     {
+      "title": "Output · monthly closing report (xlsx)",
+      "key": "report"
+     }
+    ],
+    "id": "consol-erp",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/consol-erp-1-bs.webp",
+      "caption": "Consolidated balance sheet"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/consol-erp-2-cf-direct.webp",
+      "caption": "Consolidated cash flow (direct)"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/consol-erp-3-report.webp",
+      "caption": "Report generation with automatic checks"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-0-cover.webp",
+      "caption": "Cover"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-1-is.webp",
+      "caption": "Monthly income statement"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-2-bs.webp",
+      "caption": "Monthly balance sheet"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-3-cf-direct.webp",
+      "caption": "Monthly cash flow (direct)"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-4-cf-indirect.webp",
+      "caption": "Monthly cash flow (indirect)"
+     },
+     {
+      "group": "report",
+      "src": "assets/portfolio/consol-report-5-hr.webp",
+      "caption": "Monthly staff cost and headcount"
+     }
+    ]
+   },
+   {
+    "title": "2026 Spending by Category Dashboard",
+    "meta": "StealthMole / DVERSELAB | Oct 2026 – Present",
+    "desc": "Leadership dashboard that classifies bank and card spending of 3 entities by category and shows spending and share by entity and month",
+    "role": "Designed the categories, cleaned and classified transactions, built the dashboard and its daily refresh",
+    "features": [
+     "KPI cards: total, by entity, largest category share",
+     "Cumulative by category and stacked monthly bars",
+     "Local currency / KRW toggle, monthly heat-map tables by entity"
+    ],
+    "tech": "Google Sheets · Claude Dashboard · d3.js",
+    "groups": [
+     {
+      "title": "Dashboard",
+      "key": "screen"
+     }
+    ],
+    "id": "spend-dashboard",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/spend-1-overview.webp",
+      "caption": "Summary, KPIs and charts"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/spend-2-tables.webp",
+      "caption": "Summary and monthly heat-map tables"
+     }
+    ]
+   },
+   {
+    "title": "StealthMole ERP · Attendance & HR System",
+    "meta": "StealthMole / DVERSELAB | Aug 2026 – Present",
+    "desc": "In-house HR ERP that started with automatic attendance from door-tag logs and now covers the employee roster, payroll, benefits and hiring",
+    "role": "Turned attendance and payroll rules into system logic, defined requirements, built and run it alone with generative AI (Claude Code)",
+    "features": [
+     "Dashboard checking flexible-hours core time and the 40–52 hour weekly rule",
+     "Daily, monthly and calendar attendance views including leave, remote work and trips",
+     "Single roster database as the headcount source for every screen",
+     "Payslips generated after amount checks and emailed in bulk (payroll screens not shown)"
+    ],
+    "tech": "Python FastAPI · SQLAlchemy · JavaScript · Tailwind CSS · Chart.js · Google SSO",
+    "groups": [
+     {
+      "title": "ERP screens",
+      "key": "screen"
+     }
+    ],
+    "id": "hr-erp",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-1-dashboard.webp",
+      "caption": "Attendance dashboard"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-2-monthly.webp",
+      "caption": "Monthly attendance results"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-3-calendar.webp",
+      "caption": "Attendance calendar"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/hr-erp-4-roster.webp",
+      "caption": "Employee roster"
+     }
+    ]
+   },
+   {
+    "title": "Sample DCF & PPA Model",
+    "meta": "Valuation methodology example",
+    "desc": "A generic sample model illustrating DCF and PPA (MEEM) methodology; not tied to any actual transaction",
+    "role": "Rebuilt the methodology from my participation in an acquisition valuation (DCF/PPA) project at GC Company",
+    "features": [
+     "FCFF DCF: mid-year discounting, Gordon growth terminal value, EV-to-equity bridge",
+     "WACC × terminal growth sensitivity table",
+     "Customer relationship valuation (MEEM): attrition, contributory asset charges, tax amortisation benefit",
+     "Fully formula-driven in Excel (blue inputs, black formulas)"
+    ],
+    "tech": "Excel financial modeling",
+    "groups": [
+     {
+      "title": "Model",
+      "key": "screen"
+     }
+    ],
+    "id": "sample-valuation",
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-dcf.webp",
+      "caption": "DCF (FCFF) model"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-ppa.webp",
+      "caption": "PPA · customer relationships (MEEM)"
+     }
+    ]
+   }
+  ]
  }
 }
 </script>
@@ -806,7 +1204,7 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
 const D = JSON.parse(document.getElementById('data').textContent);
 const st = {doc: 'resume', lang: 'ko'};
 try { const s = JSON.parse(localStorage.getItem('cv-view') || '{}'); if (s.doc) st.doc = s.doc; if (s.lang) st.lang = s.lang; } catch (e) {}
-const hm = (location.hash || '').slice(1).match(/^(resume|career)(?:-(ko|en))?$/);
+const hm = (location.hash || '').slice(1).match(/^(resume|career|portfolio)(?:-(ko|en))?$/);
 if (hm) { st.doc = hm[1]; if (hm[2]) st.lang = hm[2]; }
 const esc = s => String(s);
 const ul = arr => '<ul>' + arr.map(i => '<li>' + esc(i) + '</li>').join('') + '</ul>';
@@ -847,6 +1245,41 @@ function career(L) {
     tail(L);
 }
 
+function portfolio(L) {
+  const b = L.labels;
+  const card = p => {
+    const groups = p.groups.map(g => {
+      const imgs = p.images.filter(i => i.group === g.key);
+      if (!imgs.length) return '';
+      return `<div class="pf-grp">${g.title}</div><div class="pf-gallery">${imgs.map(i => `<figure><button type="button" class="pf-open" data-src="${i.src}" data-cap="${i.caption}"><img src="${i.src}" alt="${i.caption}" loading="lazy"></button><figcaption>${i.caption}<small>${b.pfCaption}</small></figcaption></figure>`).join('')}</div>`;
+    }).join('');
+    return `<section class="pf-card" id="pf-${p.id}"><h3>${p.title}</h3><p class="pf-meta">${p.meta}</p><p class="pf-desc">${p.desc}</p>
+      <dl class="pf-kv"><dt>${b.pfRole}</dt><dd>${p.role}</dd><dt>${b.pfFeatures}</dt><dd>${ul(p.features)}</dd><dt>${b.pfTech}</dt><dd>${p.tech}</dd></dl>${groups}</section>`;
+  };
+  return `<h1>${L.name}</h1><div class="headline">${b.portfolioTitle}</div><p class="pf-note">${b.pfNote}</p>` + (L.portfolio || []).map(card).join('');
+}
+const LB = { list: [], i: 0 };
+function lbShow(i) {
+  LB.i = (i + LB.list.length) % LB.list.length;
+  const t = LB.list[LB.i];
+  document.getElementById('pf-img').src = t.dataset.src; document.getElementById('pf-img').alt = t.dataset.cap;
+  document.getElementById('pf-cap').textContent = t.dataset.cap;
+  document.getElementById('pf-lb').hidden = false;
+}
+function lbClose() { document.getElementById('pf-lb').hidden = true; }
+document.getElementById('doc').addEventListener('click', e => {
+  const t = e.target.closest('.pf-open'); if (!t) return;
+  LB.list = [...document.querySelectorAll('.pf-open')]; lbShow(LB.list.indexOf(t));
+});
+document.getElementById('pf-x').onclick = lbClose;
+document.getElementById('pf-prev').onclick = () => lbShow(LB.i - 1);
+document.getElementById('pf-next').onclick = () => lbShow(LB.i + 1);
+document.getElementById('pf-lb').addEventListener('click', e => { if (e.target.id === 'pf-lb') lbClose(); });
+document.addEventListener('keydown', e => {
+  if (document.getElementById('pf-lb').hidden) return;
+  if (e.key === 'Escape') lbClose(); else if (e.key === 'ArrowLeft') lbShow(LB.i - 1); else if (e.key === 'ArrowRight') lbShow(LB.i + 1);
+});
+
 function fitLines() {
   document.querySelectorAll('.proj .t').forEach(t => {
     const s = t.querySelector('span.meta'); if (!s) return;
@@ -885,12 +1318,12 @@ function keepHyphenWords(root) {
 function render() {
   const L = D[st.lang];
   document.documentElement.lang = st.lang;
-  document.getElementById('doc').innerHTML = st.doc === 'resume' ? resume(L) : career(L);
+  document.getElementById('doc').innerHTML = st.doc === 'resume' ? resume(L) : st.doc === 'career' ? career(L) : portfolio(L);
   keepHyphenWords(document.getElementById('doc'));
-  document.getElementById('meta').textContent = `${L.labels[st.doc === 'resume' ? 'resumeTitle' : 'careerTitle']} · ${L.labels.updated}: ${D.lastUpdated}`;
-  document.title = `${L.name} — ${L.labels[st.doc === 'resume' ? 'resumeTitle' : 'careerTitle']}`;
-  const w = document.getElementById('word'); w.href = D.files[st.doc][st.lang]; w.setAttribute('download', D.files[st.doc][st.lang]);
-  [['t-resume', st.doc === 'resume'], ['t-career', st.doc === 'career'], ['l-ko', st.lang === 'ko'], ['l-en', st.lang === 'en']]
+  document.getElementById('meta').textContent = `${L.labels[{resume:'resumeTitle',career:'careerTitle',portfolio:'portfolioTitle'}[st.doc]]} · ${L.labels.updated}: ${D.lastUpdated}`;
+  document.title = `${L.name} — ${L.labels[{resume:'resumeTitle',career:'careerTitle',portfolio:'portfolioTitle'}[st.doc]]}`;
+  const w = document.getElementById('word'); const wf = D.files[st.doc] && D.files[st.doc][st.lang]; w.hidden = !wf; if (wf) { w.href = wf; w.setAttribute('download', wf); }
+  [['t-resume', st.doc === 'resume'], ['t-career', st.doc === 'career'], ['t-portfolio', st.doc === 'portfolio'], ['l-ko', st.lang === 'ko'], ['l-en', st.lang === 'en']]
     .forEach(([id, on]) => document.getElementById(id).setAttribute('aria-pressed', on));
   try { localStorage.setItem('cv-view', JSON.stringify(st)); } catch (e) {}
   requestAnimationFrame(fitLines);
@@ -898,6 +1331,7 @@ function render() {
 }
 document.getElementById('t-resume').onclick = () => { st.doc = 'resume'; render(); };
 document.getElementById('t-career').onclick = () => { st.doc = 'career'; render(); };
+document.getElementById('t-portfolio').onclick = () => { st.doc = 'portfolio'; render(); };
 document.getElementById('l-ko').onclick = () => { st.lang = 'ko'; render(); };
 document.getElementById('l-en').onclick = () => { st.lang = 'en'; render(); };
 if (location.protocol === 'file:') document.getElementById('act').hidden = false;
