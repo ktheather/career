@@ -124,7 +124,7 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
 -->
 <script id="data" type="application/json">
 {
- "lastUpdated": "2026-11-10",
+ "lastUpdated": "2026-11-11",
  "files": {
   "resume": {
    "ko": "통합이력서_김태희.docx",
@@ -633,12 +633,79 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
     ]
    },
    {
-    "title": "샘플 DCF·PPA 모델",
-    "meta": "기업가치평가 방법론 예시",
-    "desc": "기업가치평가(DCF)·PPA(MEEM) 모델링 방식을 보여 주는 일반 샘플 모델이며 특정 거래와 무관",
+    "id": "business-plan",
+    "title": "중장기 사업계획(샘플)",
+    "meta": "여기어때컴퍼니 | 2021 ~ 2026 (2023년부터 리드)",
+    "desc": "5개년 연결 사업계획(Project Whale)의 재무 모델과 연간 실적 리뷰·경쟁사 비교 방식을 일반 항목명과 가상 수치로 재구성한 샘플(실제 자료·수치 아님)",
+    "role": "5개년 장기 사업계획 리딩(2023년부터): 사업 카테고리별 거래액·수수료율 기반 매출 추정, 스트레스 테스트 시나리오와 예비비를 확보한 예산 전략 수립, 계획 대비 실적 리뷰",
+    "features": [
+     "거래액 → 수수료율 → 순매출 → 변동비·공헌이익 → 고정비 → EBITDA·조정 EBITDA → 영업이익으로 이어지는 5개년 손익 모델",
+     "실적·계획 구간별 CAGR",
+     "기본·하방·스트레스 시나리오별 EBITDA와 예비비(EBITDA 부족분 기준) 산정",
+     "계획 대비 실적 차이 분석과 감사보고서 기반 경쟁사 비교(인건비율·광고비율·영업이익률·부채비율·ROE)"
+    ],
+    "tech": "Excel 재무 모델링 · DART 공시 분석",
+    "groups": [
+     {
+      "title": "모델 화면",
+      "key": "screen"
+     }
+    ],
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-bp-plan.webp",
+      "caption": "5개년 사업계획 손익 · 시나리오"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-bp-review.webp",
+      "caption": "계획 대비 실적 · 경쟁사 비교"
+     }
+    ]
+   },
+   {
+    "id": "financial-analysis",
+    "title": "재무 모델링 및 분석(샘플)",
+    "meta": "여기어때컴퍼니 | 2023 ~ 2025",
+    "desc": "판촉비(쿠폰·포인트)를 유형·사업부별로 통합 집계해 예산 대비 실적과 효율을 분석하고, 데이터(DB)와 결산 금액을 대사하는 월간 분석을 일반 항목명과 가상 수치로 재구성한 샘플(실제 자료·수치 아님)",
+    "role": "부서마다 다르게 집계하던 할인·쿠폰 비용을 원천까지 추적해 분류 기준과 효율 지표를 통일(사업부·마케팅실·전략실·회계팀 협의체), 매월 예산 대비 실적 분석과 데이터-결산 대사",
+    "features": [
+     "쿠폰 유형 × 사업부 × 부담 주체 기준의 단일 분류 체계",
+     "유형별 월간 실적·누적 예산 대비 차이(초과 시 강조)",
+     "사업부별 거래액 대비 판촉비 효율과 예산 대비 증감",
+     "데이터(DB) vs 결산 대사: 차이 1% 초과 시 원인 확인 후 마감",
+     "성과: 프로모션 효율 17.2% 개선"
+    ],
+    "tech": "Excel · SQL · 사내 DB(쿠폰·포인트 사용 데이터)",
+    "groups": [
+     {
+      "title": "분석 화면",
+      "key": "screen"
+     }
+    ],
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-promo-cost.webp",
+      "caption": "판촉비 유형별 예산 대비 실적 · 사업부별 효율"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-promo-recon.webp",
+      "caption": "데이터(DB) vs 결산 대사"
+     }
+    ]
+   },
+   {
+    "title": "DCF·PPA 모델링(샘플)",
+    "meta": "여기어때컴퍼니 | 2021.10 ~ 2021.11, 2025.06 ~ 2026.02",
+    "desc": "여기어때 인수 대상 기업가치평가(DCF/PPA) 프로젝트에서 사용한 모델링 방식을 일반 항목명과 가상 수치로 재구성한 샘플 모델(실제 거래 자료·수치 아님)",
     "role": "여기어때 인수 대상 기업가치평가(DCF/PPA) 프로젝트 참여 경험을 바탕으로 방법론을 재구성",
     "features": [
      "FCFF 기반 DCF: 기간 중간 할인, 영구성장 모형, 영업가치에서 지분가치까지 산정",
+     "주식가치 평가결과: 비영업자산·순차입금 반영, 발행주식수 기준 주당가치 산정",
+     "추정 근거 시트: 영업비용(인원 × 인당 인건비·변동비·고정비), CAPEX·상각비, 순운전자본을 DCF에 연결",
      "WACC × 영구성장률 민감도 표",
      "고객관계 무형자산 평가(MEEM): 이탈률, 기여자산 비용, 세금 상각 효과(TAB)",
      "모든 계산을 엑셀 수식으로 연결(입력값 파랑 · 수식 검정)"
@@ -656,6 +723,11 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
       "group": "screen",
       "src": "assets/portfolio/sample-dcf.webp",
       "caption": "DCF (FCFF) 모델"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-schedules.webp",
+      "caption": "주식가치 산정 · 추정 근거(영업비용·CAPEX·운전자본)"
      },
      {
       "group": "screen",
@@ -1164,12 +1236,79 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
     ]
    },
    {
-    "title": "Sample DCF & PPA Model",
-    "meta": "Valuation methodology example",
-    "desc": "A generic sample model illustrating DCF and PPA (MEEM) methodology; not tied to any actual transaction",
+    "id": "business-plan",
+    "title": "Long-Range Business Plan (Sample)",
+    "meta": "GC Company Corp. | 2021 – 2026 (lead from 2023)",
+    "desc": "A sample rebuilding the 5-year consolidated business plan (Project Whale) model and the annual review and peer benchmark, with generic line items and illustrative figures (not actual data)",
+    "role": "Led the 5-year plan from 2023: revenue built from GMV and take rate by business category, stress-tested scenarios and a reserve-based budget strategy, plan vs actual reviews",
+    "features": [
+     "5-year P&L from GMV, take rate and net revenue through variable costs, contribution profit, fixed costs, EBITDA, normalized EBITDA and EBIT",
+     "CAGR for actual and plan periods",
+     "Base, downside and stress scenarios with EBITDA and a reserve budget sized on the EBITDA shortfall",
+     "Plan vs actual variance and a peer benchmark from audited financials (labor, marketing, EBIT margin, debt ratio, ROE)"
+    ],
+    "tech": "Excel financial modeling · DART filings analysis",
+    "groups": [
+     {
+      "title": "Model",
+      "key": "screen"
+     }
+    ],
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-bp-plan.webp",
+      "caption": "5-year plan P&L and scenarios"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-bp-review.webp",
+      "caption": "Plan vs actual and peer benchmark"
+     }
+    ]
+   },
+   {
+    "id": "financial-analysis",
+    "title": "Financial Modeling & Analysis (Sample)",
+    "meta": "GC Company Corp. | 2023 – 2025",
+    "desc": "A sample rebuilding the monthly analysis that consolidates promotion costs (coupons and points) by type and business line, compares them with budget and efficiency targets, and reconciles data (DB) with the ledger, with generic line items and illustrative figures (not actual data)",
+    "role": "Traced discount and coupon costs that each team counted differently back to the source and set one classification and efficiency metric with 4 teams; ran monthly budget vs actual analysis and DB-to-ledger reconciliation",
+    "features": [
+     "One classification by coupon type × business line × funding party",
+     "Monthly actuals and YTD variance vs budget by type (overruns highlighted)",
+     "Promotion cost as % of GMV by business line vs budget",
+     "DB vs ledger reconciliation: variances over 1% explained before closing",
+     "Result: promotion efficiency improved by 17.2%"
+    ],
+    "tech": "Excel · SQL · internal coupon and point usage data",
+    "groups": [
+     {
+      "title": "Analysis",
+      "key": "screen"
+     }
+    ],
+    "images": [
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-promo-cost.webp",
+      "caption": "Promotion cost vs budget and efficiency"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-promo-recon.webp",
+      "caption": "DB vs ledger reconciliation"
+     }
+    ]
+   },
+   {
+    "title": "DCF & PPA Modeling (Sample)",
+    "meta": "GC Company Corp. | Oct–Nov 2021, Jun 2025 – Feb 2026",
+    "desc": "A sample model rebuilding the DCF and PPA methodology used in an acquisition valuation project at GC Company, with generic line items and illustrative figures (not actual deal data)",
     "role": "Rebuilt the methodology from my participation in an acquisition valuation (DCF/PPA) project at GC Company",
     "features": [
      "FCFF DCF: mid-year discounting, Gordon growth terminal value, EV-to-equity bridge",
+     "Equity value summary with non-operating assets, net debt and value per share",
+     "Supporting schedules linked into the DCF: opex build-up (headcount × cost per head, variable, fixed), capex and D&A, net working capital",
      "WACC × terminal growth sensitivity table",
      "Customer relationship valuation (MEEM): attrition, contributory asset charges, tax amortisation benefit",
      "Fully formula-driven in Excel (blue inputs, black formulas)"
@@ -1187,6 +1326,11 @@ th small{display:block;font-weight:400;color:var(--mute);font-size:.92em}
       "group": "screen",
       "src": "assets/portfolio/sample-dcf.webp",
       "caption": "DCF (FCFF) model"
+     },
+     {
+      "group": "screen",
+      "src": "assets/portfolio/sample-schedules.webp",
+      "caption": "Equity value and supporting schedules (opex, capex, NWC)"
      },
      {
       "group": "screen",
